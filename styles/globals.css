@@ -1,0 +1,84 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 2rem auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rss-list {
+  width: 80%;
+  margin: auto;
+}
+
+.rss-list h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.rss-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0px;
+  list-style-type: none;
+}
+
+.rss-title {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin: 0;
+}
+
+.rss-info {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.rss-content {
+  overflow: hidden;
+  display: -webkit-box;
+  line-height: 1.5rem;
+  max-height: 6rem;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  transition: all 0.3s ease-in-out;
+}
+
+.rss-content.expand{
+  max-height: 15rem;
+  -webkit-line-clamp: 10;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
