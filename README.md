@@ -27,12 +27,13 @@ Fork this repository and then follow import and deploy on Vecel.
 
 More information on Vercel Deployment: [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
-## Features added
+## Features
 - Gather RSS feeds from multiplable sources
-- Sort feeds in chronologically
+- Sort feeds chronologically
 - Click on content to expand or collapse
 - Click on time to toggle time ago text and GMT time
 - Use Incremental Static Regeneration to serve pages
+- Support dark mode
 - Deployed on Vercel
 
 ## Features to be added
