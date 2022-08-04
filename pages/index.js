@@ -1,7 +1,7 @@
 import Parser from "rss-parser";
 import RSSFeeds from "../components/RSSFeeds";
 
-function HomePage({ allFeeds, fetch_time }) {
+function HomePage({ allFeeds }) {
   return <RSSFeeds feeds={allFeeds}/>;
 }
 
@@ -18,21 +18,21 @@ function timePassed(time, fetch_time) {
       return "1 day ago";
   } 
 
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const hours = Math.floor(diff / (1000 * 60 * 60));
   if (hours > 1) {
       return hours + " hours ago";
   } else if (hours === 1) {
       return "1 hour ago";
   } 
 
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const minutes = Math.floor(diff / (1000 * 60));
   if (minutes > 1) {
       return minutes + " minutes ago";
   } else if (minutes === 1) {
       return "1 minute ago";
   } 
   
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  const seconds = Math.floor(diff / 1000);
   if (seconds > 1) {
       return seconds + " seconds ago";
   } else if (seconds === 1) {
@@ -83,7 +83,6 @@ export const getStaticProps = async () => {
   return {
     props: {
       allFeeds,
-      fetch_time,
     },
     revalidate: 10,
   };
