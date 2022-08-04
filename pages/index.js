@@ -2,8 +2,7 @@ import Parser from "rss-parser";
 import RSSFeeds from "../components/RSSFeeds";
 
 function HomePage({ allFeeds, fetch_time }) {
-  return <><h1>ISR - {fetch_time}</h1>
-  <RSSFeeds feeds={allFeeds}/></>
+  return <RSSFeeds feeds={allFeeds}/>;
 }
 
 export default HomePage;
@@ -65,7 +64,7 @@ async function getFeeds(rss_sources, limit, fetch_time) {
 }
 
 export const getStaticProps = async () => {
-  
+
   const sources = {
     "知乎每日精选" : "https://www.zhihu.com/rss",
     "微软亚洲研究院" : "https://msra.cn/feed",
