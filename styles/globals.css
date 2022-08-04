@@ -63,15 +63,19 @@ ul {
   display: -webkit-box;
   line-height: 1.5rem;
   max-height: 6rem;
-  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .rss-content.expand{
   max-height: 15rem;
   -webkit-line-clamp: 10;
 }
+
+.rss-content.collapse{
+  -webkit-line-clamp: 4;
+}
+
 
 /* @media (prefers-color-scheme: dark) {
   html {

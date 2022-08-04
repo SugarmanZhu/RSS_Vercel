@@ -8,7 +8,7 @@ function RSSItem({ rss, fetch_time }) {
                 <span className="date" alt_time={rss.time_string} 
                 onClick={(e) => toggleDate(e)}>{rss.time_passed}</span>
             </p>
-            <p className="rss-content" onClick={(e) => toggleExpand(e)}>{rss.content}</p>
+            <p className="rss-content collapse" onClick={(e) => toggleExpand(e)}>{rss.content}</p>
         </div>
     );
 }
@@ -19,8 +19,16 @@ function toggleDate(clicked) {
     clicked.target.innerText = time;
 }
 
-function toggleExpand(clicked) {
-    clicked.target.classList.toggle("expand");
+async function toggleExpand(clicked) {
+    const classList = clicked.target.classList;
+    if (classList.contains("expand")) {
+        classList.remove("expand");
+        await new Promise(r => setTimeout(r, 250));  // wait for collapse animation
+        classList.add("collapse");
+    } else {
+        classList.add("expand");
+        classList.remove("collapse");
+    }
 }
 
 // function processContent(content, maxLength) {
