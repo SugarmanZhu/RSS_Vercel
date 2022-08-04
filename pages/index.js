@@ -1,8 +1,9 @@
 import Parser from "rss-parser";
 import RSSFeeds from "../components/RSSFeeds";
 
-function HomePage({ allFeeds }) {
-  return <RSSFeeds feeds={allFeeds} />
+function HomePage({ allFeeds, time }) {
+  return <><h1>ISR - {time}</h1>
+  <RSSFeeds feeds={allFeeds} /></>
 }
 
 export default HomePage;
@@ -29,7 +30,7 @@ async function getFeeds(rss_sources, limit) {
 }
 
 export const getStaticProps = async () => {
-
+  console.log("Hi");
   const sources = {
     "知乎每日精选" : "https://www.zhihu.com/rss",
     "微软亚洲研究院" : "https://msra.cn/feed",
@@ -42,11 +43,13 @@ export const getStaticProps = async () => {
     "BBC News" : "http://feeds.bbci.co.uk/news/technology/rss.xml",
   }
 
-  let allFeeds = await getFeeds(sources, 50);
+  const allFeeds = await getFeeds(sources, 50);
+  const time = Date.now();
   return {
     props: {
       allFeeds,
+      time,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
