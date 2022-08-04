@@ -29,17 +29,17 @@ export const getStaticProps = async () => {
 
   // const allFeeds = await fetch("http://localhost:3000/api");
   
-  const allFeeds = await fetch("https://rss.zhuxiaotan.xyz/api");
-  console.log(allFeeds);
-  const feeds = await allFeeds.json();
-  console.log(feeds);
+  // const allFeeds = await fetch("https://rss.zhuxiaotan.xyz/api");
+  // console.log(allFeeds);
+  // const feeds = await allFeeds.json();
+  // console.log(feeds);
 
-  return {
-    props: {
-      feeds,
-    },
-    revalidate: 10,
-  };
+  // return {
+  //   props: {
+  //     feeds,
+  //   },
+  //   revalidate: 10,
+  // };
 }
 
 function onClickDarkMode() {
