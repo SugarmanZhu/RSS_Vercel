@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
     "BBC News" : "http://feeds.bbci.co.uk/news/technology/rss.xml",
   }
 
-  const allFeeds = await getFeeds(sources, 50);
+  let allFeeds = await getFeeds(sources, 50);
   return {
     props: {
       allFeeds,
