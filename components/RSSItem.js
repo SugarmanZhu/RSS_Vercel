@@ -1,4 +1,4 @@
-function RSSItem({ rss, fetch_time }) {
+function RSSItem({ rss }) {
     return (
         <div className="rss-item">
             <a className="rss-title" href={rss.link}>{rss.title}</a>
