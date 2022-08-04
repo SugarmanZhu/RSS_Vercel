@@ -21,11 +21,10 @@ a {
 }
 
 .title {
-  margin: auto 10vw !important;
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
-  margin: 2rem auto;
+  margin: 2rem 10vw;
 }
 
 ul {
