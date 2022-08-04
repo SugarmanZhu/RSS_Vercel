@@ -5,7 +5,8 @@ function RSSItem({ rss, fetch_time }) {
             <p className="rss-info">
                 <span className="provider">{rss.provider}</span>
                 <span> · </span>
-                <span className="date" alt_time={rss.time} onClick={(e) => toggleDate(e)}>{rss.time_passed}</span>
+                <span className="date" alt_time={rss.time_string} 
+                onClick={(e) => toggleDate(e)}>{rss.time_passed}</span>
             </p>
             <p className="rss-content" onClick={(e) => toggleExpand(e)}>{rss.content}</p>
         </div>
