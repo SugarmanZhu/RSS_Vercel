@@ -27,7 +27,8 @@ export default HomePage;
 
 export const getStaticProps = async () => {
 
-  const allFeeds = await fetch("http://localhost:3000/api");
+  // const allFeeds = await fetch("http://localhost:3000/api");
+  const allFeeds = await fetch("https://rss.zhuxiaotan.xyz/api");
   const feeds = await allFeeds.json();
 
   return {
