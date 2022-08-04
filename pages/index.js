@@ -2,13 +2,25 @@ import Meta from "../components/Meta";
 import { Fragment } from "react";
 import Parser from "rss-parser";
 import RSSFeeds from "../components/RSSFeeds";
+import Button from "../components/Button";
+import HyperLink from "../components/HyperLink";
 
 function HomePage({ allFeeds }) {
   return <Fragment>
     <Meta 
       title="RSS Reader" 
-      description="Get the latest news from the world of technology."/>
-    <RSSFeeds feeds={allFeeds}/>
+      description="Get the latest news from the world of technology." />
+    <div class="header">
+    <HyperLink 
+        id="welcome_link" 
+        text="Back to Welcome Page" 
+        link="https://ec2.zhuxiaotan.xyz" />
+      <Button 
+        id="dark_mode_btn" 
+        text="Toggle Dark Mode" 
+        onClick={onClickDarkMode} />
+    </div>
+    <RSSFeeds feeds={allFeeds} />
   </Fragment>;
 }
 
@@ -106,4 +118,9 @@ async function getFeeds(rss_sources, limit, fetch_time) {
   feeds.sort((a, b) => b.isoDate.localeCompare(a.isoDate))
 
   return feeds.slice(0, limit);
+}
+
+function onClickDarkMode() {
+  const body = document.querySelector("html");
+  body.classList.toggle("dark");
 }
