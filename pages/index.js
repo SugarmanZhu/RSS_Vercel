@@ -12,6 +12,7 @@ export const getStaticProps = async () => {
   const sources = {
     "知乎每日精选" : "https://www.zhihu.com/rss",
     "知乎日报" : "https://rsshub.app/zhihu/daily",
+    "知乎热榜" : "https://rsshub.app/zhihu/hot/",
     "新浪创事记" : "https://rsshub.app/sina/csj",
     "央视新闻" : "https://rsshub.app/cctv/xwlb",
     "外交动态" : "https://rsshub.app/gov/mfa/wjdt/fyrbt",
