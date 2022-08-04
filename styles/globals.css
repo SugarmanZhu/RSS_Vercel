@@ -22,10 +22,11 @@ a {
 }
 
 .title {
+  width: 80%;
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
-  margin: 2rem 10vw;
+  margin: 2rem auto;
 }
 
 ul {
