@@ -40,15 +40,18 @@ function timePassed(rss_time, fetch_time) {
   }
 }
 
-async function getFeeds(rss_sources, limit, fetch_time_str) {
-  const fetch_time = new Date(Date.parse(fetch_time_str));
+async function getFeeds(rss_sources, limit, fetch_time) {
   const parser = new Parser();
   let feeds = [];
   for (const [source, link] of Object.entries(rss_sources)) {
     const rss_feeds = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
-      const time = item.isoDate.substring(0, 10) + " " + item.isoDate.substring(11, 19);
-      const rss_time = new Date(Date.parse(time));
+      const time = [
+        item.isoDate.substring(0, 10), 
+        item.isoDate.substring(11, 19), 
+        "GMT"
+      ].join(" ");
+      const rss_time = Date.parse(item.isoDate);
       const time_passed = timePassed(rss_time, fetch_time);
       feeds.push({
         "title" : item.title,
@@ -79,7 +82,7 @@ export const getStaticProps = async () => {
     "BBC News" : "http://feeds.bbci.co.uk/news/technology/rss.xml",
   }
 
-  const fetch_time = new Date();
+  const fetch_time = new Date().getTime();
   const allFeeds = await getFeeds(sources, 50, fetch_time);
   
   return {
