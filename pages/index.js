@@ -1,8 +1,15 @@
+import Meta from "../components/Meta";
+import { Fragment } from "react";
 import Parser from "rss-parser";
 import RSSFeeds from "../components/RSSFeeds";
 
 function HomePage({ allFeeds }) {
-  return <RSSFeeds feeds={allFeeds}/>;
+  return <Fragment>
+    <Meta 
+      title="RSS Reader" 
+      description="Get the latest news from the world of technology."/>
+    <RSSFeeds feeds={allFeeds}/>
+  </Fragment>;
 }
 
 export default HomePage;
