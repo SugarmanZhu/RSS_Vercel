@@ -7,9 +7,9 @@ function HomePage({ allFeeds }) {
 
 export default HomePage;
 
-function timePassed(time, fetch_time) {
-  const date = new Date(Date.parse(time));
-  const diff = fetch_time - date;
+function timePassed(rss_time, fetch_time) {
+
+  const diff = fetch_time - rss_time;
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   if (days > 1) {
@@ -40,25 +40,27 @@ function timePassed(time, fetch_time) {
   }
 }
 
-async function getFeeds(rss_sources, limit, fetch_time) {
+async function getFeeds(rss_sources, limit, fetch_time_str) {
+  const fetch_time = new Date(Date.parse(fetch_time_str));
   const parser = new Parser();
   let feeds = [];
   for (const [source, link] of Object.entries(rss_sources)) {
     const rss_feeds = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
-      const date = item.isoDate.substring(0, 10) + " " + item.isoDate.substring(11, 19);
-      const time_passed = timePassed(date, fetch_time);
+      const time = item.isoDate.substring(0, 10) + " " + item.isoDate.substring(11, 19);
+      const rss_time = new Date(Date.parse(time));
+      const time_passed = timePassed(rss_time, fetch_time);
       feeds.push({
         "title" : item.title,
         "link" : item.link,
-        "date" : date,
+        "time" : time,
         "time_passed" : time_passed,
         "content" : item.contentSnippet,
         "provider" : source,
       });
     }
   }
-  feeds.sort((a, b) => b.date.localeCompare(a.date))
+  feeds.sort((a, b) => b.time.localeCompare(a.time))
 
   return feeds.slice(0, limit);
 }
@@ -77,7 +79,7 @@ export const getStaticProps = async () => {
     "BBC News" : "http://feeds.bbci.co.uk/news/technology/rss.xml",
   }
 
-  const fetch_time = Date.now();
+  const fetch_time = new Date();
   const allFeeds = await getFeeds(sources, 50, fetch_time);
   
   return {
