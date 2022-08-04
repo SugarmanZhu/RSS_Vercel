@@ -10,7 +10,7 @@ function HomePage({ allFeeds }) {
     <Meta 
       title="RSS Reader" 
       description="Get the latest news from the world of technology." />
-    <div class="header">
+    <div className="header">
     <HyperLink 
         id="welcome_link" 
         text="Back to Welcome Page" 
@@ -27,7 +27,7 @@ function HomePage({ allFeeds }) {
 export default HomePage;
 
 export const getStaticProps = async () => {
-
+  
   const sources = {
     "知乎每日精选" : "https://www.zhihu.com/rss",
     "知乎日报" : "https://rsshub.app/zhihu/daily",
