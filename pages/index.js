@@ -46,24 +46,21 @@ async function getFeeds(rss_sources, limit, fetch_time) {
   for (const [source, link] of Object.entries(rss_sources)) {
     const rss_feeds = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
-      const time = [
-        item.isoDate.substring(0, 10), 
-        item.isoDate.substring(11, 19), 
-        "GMT"
-      ].join(" ");
+      const time_string = new Date(Date.parse(item.isoDate)).toUTCString();
       const rss_time = Date.parse(item.isoDate);
       const time_passed = timePassed(rss_time, fetch_time);
       feeds.push({
         "title" : item.title,
         "link" : item.link,
-        "time" : time,
+        "isoDate" : item.isoDate,
+        "time_string" : time_string,
         "time_passed" : time_passed,
         "content" : item.contentSnippet,
         "provider" : source,
       });
     }
   }
-  feeds.sort((a, b) => b.time.localeCompare(a.time))
+  feeds.sort((a, b) => b.isoDate.localeCompare(a.isoDate))
 
   return feeds.slice(0, limit);
 }
