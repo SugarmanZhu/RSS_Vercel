@@ -30,10 +30,25 @@ function HomePage({ feeds }) {
 
 export default HomePage;
 
+async function fetchWithTimeout(resource, options = {}) {
+  const { timeout = 8000 } = options;
+  
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal  
+  });
+  clearTimeout(id);
+  return response;
+}
+
 export const getStaticProps = async () => {
   // get RSS feeds from API
-  const feeds = await (await fetch(`${server}/api`)).json();
-
+  // const feeds = await (await fetchWithTimeout(`${server}/api`, {
+  //   timeout: 60000,  // 60 seconds
+  // })).json();
+  const feeds = [];
   return {
     props: {
       feeds,
