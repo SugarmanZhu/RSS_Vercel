@@ -13,8 +13,8 @@ First, run the development server:
 git clone https://github.com/SugarmanZhu/RSS_Vercel.git
 cd RSS_Vercel
 npm install
-npm build
-npm start
+npm run build
+npm run start
 ```
 
 Then, open the browser and navigate to the URL:
