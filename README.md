@@ -5,6 +5,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## View the Page
 Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz) to view the RSS page.
 
+## View the Page
+### Browser
+Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api]
+### Terminal
+```bash
+curl https://rss.zhuxiaotan.xyz/api | json_pp
+```
+
 ## Running the code loaclly
 
 First, run the development server:
@@ -44,5 +52,5 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Add lazy loading to load more content when user scrolls to the bottom of the page
 - Add a search bar to search content
 - Improve styling
-- Add API to get RSS feeds
 - Use database to store RSS feeds and allow user to check past RSS feeds
+- Use ISR to cache API responses?
