@@ -32,7 +32,7 @@ export default HomePage;
 
 export const getStaticProps = async () => {
   // get RSS feeds from API
-  const feeds = await (await fetch(`${server}/api`)).json();
+  const feeds = [];
 
   return {
     props: {
