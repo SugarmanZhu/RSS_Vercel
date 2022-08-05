@@ -34,6 +34,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Click on time to toggle time ago text and GMT time
 - Use Incremental Static Regeneration to serve pages
 - Support dark mode
+- Support fetching feeds via API (e.g. https://rss.zhuxiaotan.xyz/api/)
 - Deployed on Vercel
 
 ## Features to be added
