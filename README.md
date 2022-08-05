@@ -35,6 +35,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Use Incremental Static Regeneration to serve pages
 - Support dark mode
 - Support fetching feeds via API (e.g. https://rss.zhuxiaotan.xyz/api/)
+- Fetch feeds in parallel
 - Deployed on Vercel
 
 ## Features to be added
