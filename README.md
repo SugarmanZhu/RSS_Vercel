@@ -13,8 +13,8 @@ First, run the development server:
 git clone https://github.com/SugarmanZhu/RSS_Vercel.git
 cd RSS_Vercel
 npm install
-npm build
-npm start
+npm run build
+npm run start
 ```
 
 Then, open the browser and navigate to the URL:
@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to view th
 
 ## Deploy on Vercel
 
-Fork this repository and then follow import and deploy on Vecel.
+Fork this repository and then import and deploy on Vecel.
 
 More information on Vercel Deployment: [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
