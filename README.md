@@ -7,7 +7,7 @@ Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.
 
 ## View the Page
 ### Browser
-Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api]
+Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api](https://rss.zhuxiaotan.xyz/api)
 ### Terminal
 ```bash
 curl https://rss.zhuxiaotan.xyz/api | json_pp
@@ -42,7 +42,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Click on time to toggle time ago text and GMT time
 - Use Incremental Static Regeneration to serve pages
 - Support dark mode
-- Support fetching feeds via API (e.g. https://rss.zhuxiaotan.xyz/api/)
+- Support fetching feeds via API
 - Fetch feeds in parallel
 - Deployed on Vercel
 
