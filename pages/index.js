@@ -28,11 +28,8 @@ export default HomePage;
 
 export const getStaticProps = async () => {
 
-  // const allFeeds = await fetch(`${server}/api`);
-  // console.log(allFeeds);
-  // const feeds = await allFeeds.json();
-  // console.log(feeds);
-  const feeds = [];
+  const allFeeds = await fetch(`${server}/api`);
+  const feeds = await allFeeds.json();
 
   return {
     props: {
