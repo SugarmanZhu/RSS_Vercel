@@ -46,14 +46,16 @@ a {
 
 #welcome_link {
   float: left;
-  margin: 5px;
-  padding: 5px;
+  margin: 7px;
+  padding: 7px;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 
 #welcome_link:hover {
-  background: rgba(132, 132, 132, 0.75);
+  color: rgb(251, 251, 253);
+  background: rgb(100, 100, 100);
 }
 
 .container {
