@@ -34,46 +34,52 @@ function timePassed(rss_time, fetch_time) {
   }
 }
 
-async function getFeeds(rss_sources, limit, fetch_time) {
-  const parser = new Parser({
-    timeout: 5000,  // max 5 seconds on each request
-  });
+async function fetchFeeds(source, link, fetch_time, timeout) {
   const feeds = [];
-  for (const [source, link] of Object.entries(rss_sources)) {
-    try {
-      /* 
-        parser throws error
-        Updated next to canary.9 fixes the issue
-        See https://github.com/vercel/next.js/discussions/39242
-      */
-      const rss_feeds = await parser.parseURL(link);
-      for (const item of rss_feeds.items) {
-        const time_string = new Date(Date.parse(item.isoDate)).toUTCString();
-        const rss_time = Date.parse(item.isoDate);
-        const time_passed = timePassed(rss_time, fetch_time);
-        feeds.push({
-          "title" : item.title,
-          "link" : item.link,
-          "isoDate" : item.isoDate,
-          "time_string" : time_string,
-          "time_passed" : time_passed,
-          "content" : item.contentSnippet,
-          "provider" : source,
-        });
-      }
-      console.log(`Loaded ${source}`);
-    } catch (error) {
-      console.log(`Error while loading ${source}: ${error}`);
+  try {
+    const parser = new Parser({
+      timeout: timeout,  // max time in milliseconds on each request
+    });
+    const rss_feeds = await parser.parseURL(link);
+    for (const item of rss_feeds.items) {
+      const time_string = new Date(Date.parse(item.isoDate)).toUTCString();
+      const rss_time = Date.parse(item.isoDate);
+      const time_passed = timePassed(rss_time, fetch_time);
+      feeds.push({
+        "title" : item.title,
+        "link" : item.link,
+        "isoDate" : item.isoDate,
+        "time_string" : time_string,
+        "time_passed" : time_passed,
+        "content" : item.contentSnippet,
+        "provider" : source,
+      });
     }
+    console.log(`Successfully fetched from ${source}`);
+  } catch (error) {
+    console.log(`Error while fetching ${source} => ${error}`);
   }
-  // sort by time (lastest first)
-  feeds.sort((a, b) => b.isoDate.localeCompare(a.isoDate))
-  // limit to the first n items
-  return feeds.slice(0, limit);
+  return feeds;
+}
+
+async function fetchAll(rss_sources, limit, timeout) {
+  const fetch_time = Date.now();
+  const promises = [];
+  for (const [source, link] of Object.entries(rss_sources)) {
+    promises.push(fetchFeeds(source, link, fetch_time, timeout));
+  }
+  // Promise.all() returns an array of all the promises fetched parallely
+  let res = await Promise.all(promises);
+  console.log(`time taken: ${Date.now() - fetch_time}ms`);
+  return res.flat().sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, limit);
 }
 
 export default async function handler(req, res) {
-  const fetch_time = new Date().getTime();
-  const allFeeds = await getFeeds(sources, 50, fetch_time);
+  // get n_top most recent RSS feeds from all sources
+  const n_top = 50;
+  // limit fetch time to 8 seconds (Vercel free tier limit to 10 seconds)
+  // more than 10 seconds on Vercel will result in a timeout error (code 504)
+  const timeout = 8000;
+  const allFeeds = await fetchAll(sources, n_top, timeout);
   res.status(200).json(allFeeds);
 }
