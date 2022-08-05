@@ -12,14 +12,16 @@ function HomePage({ feeds }) {
         title="RSS Reader" 
         description="Get the latest news from the world of technology." />
       <div className="header">
-      <HyperLink 
+        <HyperLink 
           id="welcome_link" 
           text="Back to Welcome Page" 
-          link="https://ec2.zhuxiaotan.xyz" />
+          link="https://ec2.zhuxiaotan.xyz"
+        />
         <Button 
           id="dark_mode_btn" 
           text="Toggle Dark Mode" 
-          onClick={onClickDarkMode} />
+          onClick={onClickDarkMode}
+        />
       </div>
       <RSSFeeds feeds={feeds} />
     </Fragment>
@@ -36,7 +38,7 @@ export const getStaticProps = async () => {
     props: {
       feeds,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
 

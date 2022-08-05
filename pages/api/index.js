@@ -35,7 +35,9 @@ function timePassed(rss_time, fetch_time) {
 }
 
 async function getFeeds(rss_sources, limit, fetch_time) {
-  const parser = new Parser();
+  const parser = new Parser({
+    timeout: 5000,
+  });
   let feeds = [];
   for (const [source, link] of Object.entries(rss_sources)) {
     try {
