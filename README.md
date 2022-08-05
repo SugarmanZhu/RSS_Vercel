@@ -45,7 +45,7 @@ Fork this repository and then import and deploy on Vecel.
 More information on Vercel Deployment: [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
 
-## Features
+## DONE
 
 - Gather RSS feeds from multiplable sources
 - Sort feeds chronologically
@@ -58,7 +58,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Deployed on Vercel
 
 
-## Features to be added
+## TODO
 
 - Allow user to specify the RSS feed source
 - Add filter to filter out unwanted content
