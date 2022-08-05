@@ -20,7 +20,7 @@ function HomePage({ feeds }) {
         text="Toggle Dark Mode" 
         onClick={onClickDarkMode} />
     </div>
-    <RSSFeeds feeds={feeds} />
+    <RSSFeeds feeds={[]} />
   </Fragment>;
 }
 
