@@ -50,7 +50,7 @@ a {
   padding: 7px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
 }
 
 #welcome_link:hover {
