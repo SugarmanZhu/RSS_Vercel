@@ -88,14 +88,13 @@ ul {
 
 .rss-item {
   border-bottom: 1px solid #ccc;
-  padding: 10px 0px;
+  padding: 26px 0px 10px 0px;
   list-style-type: none;
 }
 
 .rss-title {
   font-size: 1.5rem !important;
   font-weight: bold;
-  margin: 0;
 }
 
 .rss-info {
