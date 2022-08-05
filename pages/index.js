@@ -48,7 +48,8 @@ export const getStaticProps = async () => {
   // const feeds = await (await fetchWithTimeout(`${server}/api`, {
   //   timeout: 60000,  // 60 seconds
   // })).json();
-  const feeds = [];
+  // const feeds = [];
+  const feeds = await (await fetch(`${server}/api`)).json();
   return {
     props: {
       feeds,
