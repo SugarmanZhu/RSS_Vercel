@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import RSSFeeds from "../components/RSSFeeds";
 import Button from "../components/Button";
 import HyperLink from "../components/HyperLink";
+import { server } from "../config";
 
 function HomePage({ feeds }) {
   return <Fragment>
@@ -27,19 +28,17 @@ export default HomePage;
 
 export const getStaticProps = async () => {
 
-  // const allFeeds = await fetch("http://localhost:3000/api");
-  
-  // const allFeeds = await fetch("https://rss.zhuxiaotan.xyz/api");
-  // console.log(allFeeds);
-  // const feeds = await allFeeds.json();
-  // console.log(feeds);
+  const allFeeds = await fetch(`${server}/api`);
+  console.log(allFeeds);
+  const feeds = await allFeeds.json();
+  console.log(feeds);
 
-  // return {
-  //   props: {
-  //     feeds,
-  //   },
-  //   revalidate: 10,
-  // };
+  return {
+    props: {
+      feeds,
+    },
+    revalidate: 10,
+  };
 }
 
 function onClickDarkMode() {
