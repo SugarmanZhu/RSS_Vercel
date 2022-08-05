@@ -2,7 +2,7 @@ import Parser from "rss-parser";
 import { sources } from "../../config/rss_sources";
 
 function timePassed(rss_time, fetch_time) {
-
+  // Get the difference in milliseconds between rss_time and fetch_time
   const diff = fetch_time - rss_time;
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -39,6 +39,11 @@ async function getFeeds(rss_sources, limit, fetch_time) {
   let feeds = [];
   for (const [source, link] of Object.entries(rss_sources)) {
     try {
+      /* 
+        parser throws error
+        Updated next to canary.9 fixes the issue
+        See https://github.com/vercel/next.js/discussions/39242
+      */
       const rss_feeds = await parser.parseURL(link);
       for (const item of rss_feeds.items) {
         const time_string = new Date(Date.parse(item.isoDate)).toUTCString();
@@ -59,8 +64,9 @@ async function getFeeds(rss_sources, limit, fetch_time) {
       console.log(`Error while loading ${source}: ${error}`);
     }
   }
+  // sort by time (lastest first)
   feeds.sort((a, b) => b.isoDate.localeCompare(a.isoDate))
-
+  // limit to the first n items
   return feeds.slice(0, limit);
 }
 

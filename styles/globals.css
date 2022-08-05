@@ -117,14 +117,3 @@ ul {
 .rss-content.collapse{
   -webkit-line-clamp: 4;
 }
-
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */

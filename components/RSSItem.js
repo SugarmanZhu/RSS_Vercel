@@ -14,6 +14,7 @@ function RSSItem({ rss }) {
 }
 
 function toggleDate(clicked) {
+    // toggle date format (45 minutes ago <-> Fri, 05 Aug 2022 02:37:25 GMT)
     const time = clicked.target.getAttribute("alt_time");
     clicked.target.setAttribute("alt_time", clicked.target.innerText);
     clicked.target.innerText = time;
@@ -23,19 +24,16 @@ async function toggleExpand(clicked) {
     const classList = clicked.target.classList;
     if (classList.contains("expand")) {
         classList.remove("expand");
-        await new Promise(r => setTimeout(r, 250));  // wait for collapse animation
+        /* 
+            -webkit-line-clamp breaks css animation for some reason
+            wait for collapse animation (250ms) to finish before line-clamp
+        */
+        await new Promise(r => setTimeout(r, 250));
         classList.add("collapse");
     } else {
         classList.add("expand");
         classList.remove("collapse");
     }
 }
-
-// function processContent(content, maxLength) {
-//     if (content.length > maxLength) {
-//         return content.substring(0, maxLength - 3) + "...";
-//     }
-//     return content;
-// }
 
 export default RSSItem;
