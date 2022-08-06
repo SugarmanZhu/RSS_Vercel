@@ -58,11 +58,22 @@ export const getStaticProps = async () => {
   };
 }
 
-function onClickDarkMode() {
+async function onClickDarkMode() {
   // toggle dark mode
   const body = document.querySelector("html");
   body.classList.toggle("dark");
+
+  // bottom fade workaround (not a nice solution but looks okay to me)
   const bottom_fade = document.getElementById("bottom_fade");
+  // move bottom fade out of viewport ()
+  bottom_fade.classList.toggle("bottom-0");
+  bottom_fade.classList.toggle("bottom--28");
+  // allow 100ms for bottom fade to be fully hidden 
+  // so user won't see the awful transition :)
+  await new Promise(r => setTimeout(r, 100));
   bottom_fade.classList.toggle("from-black");
   bottom_fade.classList.toggle("from-white");
+  // move bottom fade back in viewport
+  bottom_fade.classList.toggle("bottom-0");
+  bottom_fade.classList.toggle("bottom--28");
 }
