@@ -12,8 +12,8 @@ function RSSItem({ rss }) {
                 </span>
             </p>
             <p onClick={(e) => toggleExpand(e)} 
-                className="my-2 max-h-60 line:max-h-96 leading-normal transition-all 
-                line-clamp-10 line:line-clamp-16">
+                className="my-2 max-h-60 line:max-h-96 leading-normal 
+                transition-[max-height] line-clamp-10 line:line-clamp-16">
                 {rss.content}
             </p>
         </div>
