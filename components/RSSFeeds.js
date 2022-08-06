@@ -3,8 +3,11 @@ import RSSList from "../components/RSSList";
 
 function RSSFeeds({ feeds }) {
     return (
-        <div className="container">
-          <Title title="Welcome to RSS Feeds"/>
+        <div className="max-w-6xl p-4 m-auto">
+          <Title 
+            title="Welcome to RSS Feeds" 
+            className="text-5xl font-bold text-center m-8"
+          />
           <RSSList feeds={feeds} />
         </div>
     );

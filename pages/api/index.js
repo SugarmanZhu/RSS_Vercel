@@ -42,16 +42,16 @@ async function fetchFeeds(source, link, fetch_time, timeout) {
     });
     const rss_feeds = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
-      const time_string = new Date(Date.parse(item.isoDate)).toUTCString();
-      const rss_time = Date.parse(item.isoDate);
-      const time_passed = timePassed(rss_time, fetch_time);
       feeds.push({
         "title" : item.title,
         "link" : item.link,
         "isoDate" : item.isoDate,
-        "time_string" : time_string,
-        "time_passed" : time_passed,
-        "content" : item.contentSnippet,
+        // e.g. "Tue, 15 Jun 2020 09:00:00 GMT"
+        "time_string" : new Date(Date.parse(item.isoDate)).toUTCString(),
+        // time passed since the rss_time (seconds ago, minutes ago, etc.)
+        "time_passed" : timePassed(Date.parse(item.isoDate), fetch_time),
+         // remove extra spaces between words (max 1 space between words)
+        "content" : item.contentSnippet.replace(/\s+/g, " "),
         "provider" : source,
       });
     }
@@ -71,14 +71,26 @@ async function fetchAll(rss_sources, limit, timeout) {
   // Promise.all() returns an array of all the promises fetched parallely
   let res = await Promise.all(promises);
   console.log(`time taken: ${Date.now() - fetch_time}ms`);
-  return res.flat().sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, limit);
+  return (
+    // flatten the array of arrays into a single array
+    res.flat()
+    // sort by time_passed (ascending)
+    .sort((a, b) => b.isoDate.localeCompare(a.isoDate))
+    // limit the number of items to be returned
+    .slice(0, limit)
+  );
 }
 
 export default async function handler(req, res) {
   // get n_top most recent RSS feeds from all sources
   const n_top = 50;
-  // limit fetch time to 8 seconds (Vercel free tier limit to 10 seconds)
-  // more than 10 seconds on Vercel will result in a timeout error (code 504)
+  /* 
+    Vercel Hobby (free tier) Serverless Function Execution Timeout: 10 seconds
+    See https://vercel.com/docs/concepts/limits/
+    More than 10 seconds on Vercel will result in a timeout error (code 504)
+    Feeds usually take less than 3 seconds to fetch
+    Limit fetch time to 8 seconds to avoid timeout error
+  */
   const timeout = 8000;
   const allFeeds = await fetchAll(sources, n_top, timeout);
   res.status(200).json(allFeeds);

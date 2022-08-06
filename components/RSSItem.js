@@ -1,14 +1,21 @@
 function RSSItem({ rss }) {
     return (
-        <div className="rss-item">
-            <a className="rss-title" href={rss.link}>{rss.title}</a>
-            <p className="rss-info">
-                <span className="provider">{rss.provider}</span>
+        <div className="p-4 mt-2 border-b-4 border-neutral-300 
+            dark:border-neutral-700 transition-colors">
+            <a className="text-2xl font-bold" href={rss.link}>{rss.title}</a>
+            <p className="text-neutral-500 py-px justify-center">
+                <span>{rss.provider}</span>
                 <span> · </span>
-                <span className="date" alt_time={rss.time_string} 
-                onClick={(e) => toggleDate(e)}>{rss.time_passed}</span>
+                <span alt_time={rss.time_string} 
+                onClick={(e) => toggleDate(e)}>
+                    {rss.time_passed}
+                </span>
             </p>
-            <p className="rss-content collapse" onClick={(e) => toggleExpand(e)}>{rss.content}</p>
+            <p onClick={(e) => toggleExpand(e)} 
+                className="my-2 max-h-60 line:max-h-96 leading-normal transition-all 
+                line-clamp-10 line:line-clamp-16">
+                {rss.content}
+            </p>
         </div>
     );
 }
@@ -24,20 +31,25 @@ function toggleDate(clicked) {
 }
 
 async function toggleExpand(clicked) {
-    // if user not trying to select text, toggle expand
+    // if user is trying to select text, DO NOT toggle expand
     if (window.getSelection().type != "Range") {
         const classList = clicked.target.classList;
-        if (classList.contains("expand")) {
-            classList.remove("expand");
+        // TODO - improve this
+        if (classList.contains("max-h-96")) {
+            classList.remove("max-h-96");
+            classList.add("max-h-60");
             /* 
                 -webkit-line-clamp breaks css animation for some reason
                 wait for collapse animation (250ms) to finish before line-clamp
             */
-            await new Promise(r => setTimeout(r, 250));
-            classList.add("collapse");
+            await new Promise(r => setTimeout(r, 150));
+            classList.remove("line-clamp-16");
+            classList.add("line-clamp-10");
         } else {
-            classList.add("expand");
-            classList.remove("collapse");
+            classList.remove("max-h-60");
+            classList.add("max-h-96");
+            classList.remove("line-clamp-10");
+            classList.add("line-clamp-16");
         }
     }
 }

@@ -10,17 +10,20 @@ function HomePage({ feeds }) {
     <Fragment>
       <Meta 
         title="RSS Reader" 
-        description="Get the latest news from the world of technology." />
-      <div className="header">
+        description="Get the latest news from the world of technology." 
+      />
+      <div className="flex justify-between">
         <HyperLink 
-          id="welcome_link" 
           text="Back to Welcome Page" 
           link="https://ec2.zhuxiaotan.xyz"
+          className="m-2 p-2 rounded-lg hover:bg-neutral-300 
+            dark:hover:bg-neutral-600 transition-colors"
         />
         <Button 
-          id="dark_mode_btn" 
           text="Toggle Dark Mode" 
           onClick={onClickDarkMode}
+          className="p-2.5 bg-neutral-800 text-neutral-50 
+            hover:bg-neutral-700 rounded-bl-lg transition-colors"
         />
       </div>
       <RSSFeeds feeds={feeds} />
@@ -30,50 +33,19 @@ function HomePage({ feeds }) {
 
 export default HomePage;
 
-async function fetchWithTimeout(resource, options = {}) {
-  const { timeout = 8000 } = options;
-  
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-  const response = await fetch(resource, {
-    ...options,
-    signal: controller.signal  
-  });
-  clearTimeout(id);
-  return response;
-}
-
 export const getStaticProps = async () => {
   // get RSS feeds from API
-  // const feeds = await (await fetchWithTimeout(`${server}/api`, {
-  //   timeout: 60000,  // 60 seconds
-  // })).json();
-  // const feeds = [];
   const feeds = await (await fetch(`${server}/api`)).json();
   return {
     props: {
       feeds,
     },
+    // ISR every 10 seconds
     revalidate: 10,
   };
 }
 
 async function onClickDarkMode() {
   // toggle dark mode
-  const body = document.querySelector("html");
-  body.classList.toggle("dark");
-
-  // bottom fade workaround (not a nice solution but looks okay to me)
-  const bottom_fade = document.getElementById("bottom_fade");
-  // move bottom fade out of viewport ()
-  bottom_fade.classList.toggle("bottom-0");
-  bottom_fade.classList.toggle("bottom--28");
-  // allow 100ms for bottom fade to be fully hidden 
-  // so user won't see the awful transition :)
-  await new Promise(r => setTimeout(r, 100));
-  bottom_fade.classList.toggle("from-black");
-  bottom_fade.classList.toggle("from-white");
-  // move bottom fade back in viewport
-  bottom_fade.classList.toggle("bottom-0");
-  bottom_fade.classList.toggle("bottom--28");
+  document.querySelector("html").classList.toggle("dark");
 }

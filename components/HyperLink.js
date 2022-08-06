@@ -1,3 +1,3 @@
-export default function HyperLink({ id, text, link }) {
-    return <a id={id} href={link}>{text}</a>
+export default function HyperLink({ text, link, className }) {
+    return <a className={className} href={link}>{text}</a>
 };
