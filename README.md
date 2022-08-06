@@ -55,6 +55,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Support dark mode
 - Support fetching feeds via API
 - Fetch feeds in parallel
+- Add bottom fade (buggy during dark mode toggle)
 - Deployed on Vercel
 
 
@@ -67,3 +68,4 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Improve styling
 - Use database to store RSS feeds and allow user to check past RSS feeds
 - Use ISR to cache API responses?
+- Fix buggy fade
