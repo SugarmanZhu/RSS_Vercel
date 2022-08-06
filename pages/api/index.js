@@ -50,7 +50,13 @@ async function fetchFeeds(source, link, fetch_time, timeout) {
         "time_string" : new Date(Date.parse(item.isoDate)).toUTCString(),
         // time passed since the rss_time (seconds ago, minutes ago, etc.)
         "time_passed" : timePassed(Date.parse(item.isoDate), fetch_time),
-         // remove extra spaces between words (max 1 space between words)
+        /*
+          remove extra spaces between words (max 1 space between words)
+          /\s+/g is a regex to match all whitespace
+          \s for whitespaces including tabs, newlines, etc.
+          + for one or more
+          g for global (match all) 
+        */
         "content" : item.contentSnippet.replace(/\s+/g, " "),
         "provider" : source,
       });
