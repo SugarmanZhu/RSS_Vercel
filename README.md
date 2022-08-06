@@ -12,12 +12,14 @@ Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.
 
 ### Browser
 
-Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api](https://rss.zhuxiaotan.xyz/api)
+Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api/50](https://rss.zhuxiaotan.xyz/api/50)
+
+This will fetch 50 lastest RSS feeds.
 
 ### Terminal
 
 ```bash
-curl https://rss.zhuxiaotan.xyz/api | json_pp
+curl https://rss.zhuxiaotan.xyz/api/50 | json_pp
 ```
 
 

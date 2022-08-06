@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import RSSFeeds from "../components/RSSFeeds";
 import Button from "../components/Button";
 import HyperLink from "../components/HyperLink";
-import { server } from "../config";
+import { server } from "../config/server";
 
 function HomePage({ feeds }) {
   return (
@@ -34,8 +34,8 @@ function HomePage({ feeds }) {
 export default HomePage;
 
 export const getStaticProps = async () => {
-  // get RSS feeds from API
-  const feeds = await (await fetch(`${server}/api`)).json();
+  // get 50 lastest RSS feeds from API (limited to 50 for performance)
+  const feeds = await (await fetch(`${server}/api/50`)).json();
   return {
     props: {
       feeds,
