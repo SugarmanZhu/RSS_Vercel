@@ -97,7 +97,7 @@ export default async function handler(
   req : Request, res : Response
 ) : Promise<void> {
   // get n_top most recent RSS feeds from all sources
-  const n_top : number = 50;
+  const n_top : number = 500;
   /* 
     Vercel Hobby (free tier) Serverless Function Execution Timeout: 10 seconds
     See https://vercel.com/docs/concepts/limits/

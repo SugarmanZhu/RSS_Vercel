@@ -24,8 +24,8 @@ function toggleDate(clicked) {
     // if user not trying to select text, toggle date
     if (window.getSelection().type != "Range") {
         // toggle date format (45 minutes ago <-> Fri, 05 Aug 2022 02:37:25 GMT)
-        const time = clicked.target.getAttribute("alt_time");
-        clicked.target.setAttribute("alt_time", clicked.target.innerText);
+        const time = clicked.target.getAttribute("data-alt_time");
+        clicked.target.setAttribute("data-alt_time", clicked.target.innerText);
         clicked.target.innerText = time;
     }
 }
