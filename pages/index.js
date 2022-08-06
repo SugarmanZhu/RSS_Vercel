@@ -62,4 +62,7 @@ function onClickDarkMode() {
   // toggle dark mode
   const body = document.querySelector("html");
   body.classList.toggle("dark");
+  const bottom_fade = document.getElementById("bottom_fade");
+  bottom_fade.classList.toggle("from-black");
+  bottom_fade.classList.toggle("from-white");
 }

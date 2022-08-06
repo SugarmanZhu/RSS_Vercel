@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 html {
   padding: 0;
   margin: 0;
@@ -5,7 +9,7 @@ html {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: rgb(251, 251, 253);
   color: rgb(29, 29, 31);
-  transition: all 0.25s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 body {
@@ -31,6 +35,10 @@ a {
   justify-content: space-between;
 }
 
+#bottom_fade {
+  transition: background-image 0.25s ease-in-out;
+}
+
 #dark_mode_btn {
   float: right;
   background: rgb(33, 33, 33);
@@ -38,6 +46,7 @@ a {
   padding: 10px;
   border-radius: 0 0 0 5px;
   cursor: pointer;
+  transition: background 0.25s ease-in-out;
 }
 
 #dark_mode_btn:hover {
@@ -79,6 +88,7 @@ ul {
 .rss-list {
   width: 80%;
   margin: auto;
+  padding-bottom: 100px;
 }
 
 .rss-list h1 {
