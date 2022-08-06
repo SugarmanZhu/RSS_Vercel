@@ -6,7 +6,7 @@ function RSSItem({ rss }) {
             <p className="text-neutral-500 py-px justify-center">
                 <span>{rss.provider}</span>
                 <span> · </span>
-                <span alt_time={rss.time_string} 
+                <span data-alt_time={rss.time_string} 
                 onClick={(e) => toggleDate(e)}>
                     {rss.time_passed}
                 </span>
@@ -40,7 +40,7 @@ async function toggleExpand(clicked) {
             classList.add("max-h-60");
             /* 
                 -webkit-line-clamp breaks css animation for some reason
-                wait for collapse animation (250ms) to finish before line-clamp
+                wait for collapse animation (150ms) to finish before line-clamp
             */
             await new Promise(r => setTimeout(r, 150));
             classList.remove("line-clamp-16");

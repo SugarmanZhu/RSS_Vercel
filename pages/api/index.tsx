@@ -1,32 +1,34 @@
 import Parser from "rss-parser";
 import { sources } from "../../config/rss_sources";
+import { Request, Response } from 'express';
+import { RSSItemType } from "../../types/RSSItemType";
 
-function timePassed(rss_time, fetch_time) {
+function timePassed(rss_time : number, fetch_time : number) : string {
   // Get the difference in milliseconds between rss_time and fetch_time
-  const diff = fetch_time - rss_time;
+  const diff : number = fetch_time - rss_time;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const days : number = Math.floor(diff / (1000 * 60 * 60 * 24));
   if (days > 1) {
       return days + " days ago";
   } else if (days === 1) {
       return "1 day ago";
   } 
 
-  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const hours : number = Math.floor(diff / (1000 * 60 * 60));
   if (hours > 1) {
       return hours + " hours ago";
   } else if (hours === 1) {
       return "1 hour ago";
   } 
 
-  const minutes = Math.floor(diff / (1000 * 60));
+  const minutes : number = Math.floor(diff / (1000 * 60));
   if (minutes > 1) {
       return minutes + " minutes ago";
   } else if (minutes === 1) {
       return "1 minute ago";
   } 
   
-  const seconds = Math.floor(diff / 1000);
+  const seconds : number = Math.floor(diff / 1000);
   if (seconds > 1) {
       return seconds + " seconds ago";
   } else if (seconds === 1) {
@@ -34,13 +36,15 @@ function timePassed(rss_time, fetch_time) {
   }
 }
 
-async function fetchFeeds(source, link, fetch_time, timeout) {
-  const feeds = [];
+async function fetchFeeds(
+  source : string, link : string, fetch_time : number, timeout : number
+) : Promise<Array<RSSItemType>> {
+  const feeds : Array<RSSItemType> = [];
   try {
-    const parser = new Parser({
+    const parser : Parser = new Parser({
       timeout: timeout,  // max time in milliseconds on each request
     });
-    const rss_feeds = await parser.parseURL(link);
+    const rss_feeds : Parser.Output<Parser.Item> = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
       feeds.push({
         "title" : item.title,
@@ -68,14 +72,16 @@ async function fetchFeeds(source, link, fetch_time, timeout) {
   return feeds;
 }
 
-async function fetchAll(rss_sources, limit, timeout) {
-  const fetch_time = Date.now();
-  const promises = [];
+async function fetchAll(
+  rss_sources : Record<string, string>, limit : number, timeout : number
+) : Promise<Array<RSSItemType>> {
+  const fetch_time : number = Date.now();
+  const promises : Array<Promise<Array<RSSItemType>>> = [];
   for (const [source, link] of Object.entries(rss_sources)) {
     promises.push(fetchFeeds(source, link, fetch_time, timeout));
   }
   // Promise.all() returns an array of all the promises fetched parallely
-  let res = await Promise.all(promises);
+  let res : Array<Array<RSSItemType>> = await Promise.all(promises);
   console.log(`time taken: ${Date.now() - fetch_time}ms`);
   return (
     // flatten the array of arrays into a single array
@@ -87,9 +93,11 @@ async function fetchAll(rss_sources, limit, timeout) {
   );
 }
 
-export default async function handler(req, res) {
+export default async function handler(
+  req : Request, res : Response
+) : Promise<void> {
   // get n_top most recent RSS feeds from all sources
-  const n_top = 50;
+  const n_top : number = 50;
   /* 
     Vercel Hobby (free tier) Serverless Function Execution Timeout: 10 seconds
     See https://vercel.com/docs/concepts/limits/
@@ -97,7 +105,7 @@ export default async function handler(req, res) {
     Feeds usually take less than 3 seconds to fetch
     Limit fetch time to 8 seconds to avoid timeout error
   */
-  const timeout = 8000;
-  const allFeeds = await fetchAll(sources, n_top, timeout);
+  const timeout : number = 8000;
+  const allFeeds : Array<RSSItemType> = await fetchAll(sources, n_top, timeout);
   res.status(200).json(allFeeds);
 }

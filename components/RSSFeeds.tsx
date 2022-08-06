@@ -1,5 +1,5 @@
-import Title from "../components/Title";
-import RSSList from "../components/RSSList";
+import Title from "./Title";
+import RSSList from "./RSSList";
 
 function RSSFeeds({ feeds }) {
     return (

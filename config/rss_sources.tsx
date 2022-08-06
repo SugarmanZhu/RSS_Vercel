@@ -1,6 +1,6 @@
 // RSS sources
 
-export const sources = {
+export const sources : Record<string, string> = {
   "知乎每日精选" : "https://www.zhihu.com/rss",
   "知乎日报" : "https://rsshub.app/zhihu/daily",
   "知乎热榜" : "https://rsshub.app/zhihu/hot/",
