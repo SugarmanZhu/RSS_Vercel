@@ -82,15 +82,21 @@ async function fetchAll(
   }
   // Promise.all() returns an array of all the promises fetched parallely
   let res : Array<Array<RSSItemType>> = await Promise.all(promises);
+  
   console.log(`time taken: ${Date.now() - fetch_time}ms`);
-  return (
-    // flatten the array of arrays into a single array
-    res.flat()
-    // sort by time_passed (ascending)
-    .sort((a, b) => b.isoDate.localeCompare(a.isoDate))
+
+  const feeds : Array<RSSItemType> = 
+  // flatten the array of arrays into a single array
+  res.flat()
+  // sort by time_passed (ascending)
+  .sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+
+  if (limit > 0) {
     // limit the number of items to be returned
-    .slice(0, limit)
-  );
+    return feeds.slice(0, limit);
+  }
+  // return all feeds if limit is 0 or n oldest feeds if limit is negative
+  return feeds.slice(limit);
 }
 
 export default async function handler(
