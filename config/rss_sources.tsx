@@ -8,6 +8,7 @@ export const sources : Record<string, string> = {
   "Elon Mask" : "https://rsshub.app/twitter/user/elonmusk",
   "Bill Gates" : "https://rsshub.app/twitter/user/billgates",
   "Tim Cook" : "https://rsshub.app/twitter/user/tim_cook",
+  "Jeff Bezos" : "https://rsshub.app/twitter/user/jeffbezos",
   "The Verge" : "https://www.theverge.com/rss/frontpage",
   "电丸科技AK" : "https://rsshub.app/youtube/channel/UCZVThl_MRppEdGUPGjXSSdg",
   "Netflix" : "https://rsshub.app/netflix/newsroom",
