@@ -7,19 +7,67 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz) to view the RSS page.
 
+### Parameter
+
+A limit parameter may be added to the URL to specify the number of feeds to display.
+
+The main page ([https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz)) displays 50 latest feeds.
+
+Display 20 lastest feeds: [https://rss.zhuxiaotan.xyz/20](https://rss.zhuxiaotan.xyz/20)
+
+Display 10 oldest feeds: [https://rss.zhuxiaotan.xyz/10](https://rss.zhuxiaotan.xyz/10)
+
+Display all feeds: [https://rss.zhuxiaotan.xyz/0](https://rss.zhuxiaotan.xyz/0)
+
+Note: The number of feeds is recommanded to be kept less than 50 for performance.
+
+### Cached pages
+
+The main page ([https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz)) is being cached and updated every 10 seconds.
+
+The following pages are being cached and updated every 60 seconds:
+- [https://rss.zhuxiaotan.xyz/-300](https://rss.zhuxiaotan.xyz/-300)
+- [https://rss.zhuxiaotan.xyz/-200](https://rss.zhuxiaotan.xyz/-200)
+- [https://rss.zhuxiaotan.xyz/-100](https://rss.zhuxiaotan.xyz/-100)
+- [https://rss.zhuxiaotan.xyz/0](https://rss.zhuxiaotan.xyz/0)
+- [https://rss.zhuxiaotan.xyz/100](https://rss.zhuxiaotan.xyz/100)
+- [https://rss.zhuxiaotan.xyz/200](https://rss.zhuxiaotan.xyz/200)
+- [https://rss.zhuxiaotan.xyz/300](https://rss.zhuxiaotan.xyz/300)
+
+All other pages are not cached (loading takes longer).
+
 
 ## API Usage
+
+### Parameter
+
+A limit parameter must be added to the URL to specify the number of feeds to fetch.
 
 ### Browser
 
 Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz/api/50](https://rss.zhuxiaotan.xyz/api/50)
 
-This will fetch 50 lastest RSS feeds.
-
 ### Terminal
 
 ```bash
 curl https://rss.zhuxiaotan.xyz/api/50 | json_pp
+```
+
+### Query Examples
+
+- Fetch 20 lastest RSS feeds: 
+```bash
+curl https://rss.zhuxiaotan.xyz/api/20 | json_pp
+```
+
+- Fetch 10 oldest RSS feeds:
+```bash
+curl https://rss.zhuxiaotan.xyz/api/-10 | json_pp
+```
+
+- Fetch all the RSS feeds:
+```bash
+curl https://rss.zhuxiaotan.xyz/api/0 | json_pp
 ```
 
 
