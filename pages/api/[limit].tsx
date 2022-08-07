@@ -50,8 +50,8 @@ async function fetchFeeds(
         "title" : !item.title.trim() ? `Feed from ${source}` : item.title,
         "link" : item.link,
         "isoDate" : item.isoDate,
-        // e.g. "Tue, 15 Jun 2020 09:00:00 GMT"
-        "time_string" : new Date(Date.parse(item.isoDate)).toUTCString(),
+        // e.g. "07/08/2022, 21:52:14"
+        "time_string" : new Date(Date.parse(item.isoDate)).toLocaleString(),
         // time passed since the rss_time (seconds ago, minutes ago, etc.)
         "time_passed" : timePassed(Date.parse(item.isoDate), fetch_time),
         /*
