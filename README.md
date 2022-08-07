@@ -115,6 +115,6 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Add filter to filter out unwanted content
 - Add lazy loading to load more content when user scrolls to the bottom of the page
 - Add a search bar to search content
-- Improve styling
+- Convert UTC time to Locale time on front end (using Intl / momentJS)
 - Use database to store RSS feeds and allow user to check past RSS feeds
 - Use ISR to cache API responses?
