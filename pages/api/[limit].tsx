@@ -47,7 +47,7 @@ async function fetchFeeds(
     const rss_feeds : Parser.Output<Parser.Item> = await parser.parseURL(link);
     for (const item of rss_feeds.items) {
       feeds.push({
-        "title" : item.title,
+        "title" : !item.title.trim() ? `Feed from ${source}` : item.title,
         "link" : item.link,
         "isoDate" : item.isoDate,
         // e.g. "Tue, 15 Jun 2020 09:00:00 GMT"
