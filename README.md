@@ -9,17 +9,17 @@ Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.
 
 ### Parameter
 
-A limit parameter may be added to the URL to specify the number of feeds to display.
+A parameter may be added to the URL to specify the number of feeds to display.
 
 The main page ([https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz)) displays 50 latest feeds.
 
 Display 20 lastest feeds: [https://rss.zhuxiaotan.xyz/20](https://rss.zhuxiaotan.xyz/20)
 
-Display 10 oldest feeds: [https://rss.zhuxiaotan.xyz/10](https://rss.zhuxiaotan.xyz/10)
+Display 10 oldest feeds: [https://rss.zhuxiaotan.xyz/-10](https://rss.zhuxiaotan.xyz/10)
 
 Display all feeds: [https://rss.zhuxiaotan.xyz/0](https://rss.zhuxiaotan.xyz/0)
 
-Note: The number of feeds is recommanded to be kept less than 50 for performance.
+Note: the number of feeds is recommanded to be kept less than 50 for performance.
 
 ### Cached pages
 
@@ -41,7 +41,7 @@ All other pages are not cached (loading takes longer).
 
 ### Parameter
 
-A limit parameter must be added to the URL to specify the number of feeds to fetch.
+A parameter must be added to the URL to specify the number of feeds to fetch.
 
 ### Browser
 
