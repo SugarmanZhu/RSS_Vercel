@@ -35,7 +35,8 @@ export default HomePage;
 
 export const getStaticProps = async () => {
   // get 50 lastest RSS feeds from API (limited to 50 for performance)
-  const feeds = await (await fetch(`${server}/api/50`)).json();
+  // const feeds = await (await fetch(`${server}/api/50`)).json();
+  const feeds = [];
   return {
     props: {
       feeds,
