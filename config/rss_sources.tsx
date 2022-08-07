@@ -5,7 +5,7 @@ export const sources : Record<string, string> = {
   "知乎日报" : "https://rsshub.app/zhihu/daily",
   "知乎热榜" : "https://rsshub.app/zhihu/hot/",
   "外交动态" : "https://rsshub.app/gov/mfa/wjdt/fyrbt",
-  "Elon Mask" : "https://rsshub.app/twitter/user/elonmusk",
+  "Elon Musk" : "https://rsshub.app/twitter/user/elonmusk",
   "Bill Gates" : "https://rsshub.app/twitter/user/billgates",
   "Tim Cook" : "https://rsshub.app/twitter/user/tim_cook",
   "Jeff Bezos" : "https://rsshub.app/twitter/user/jeffbezos",
