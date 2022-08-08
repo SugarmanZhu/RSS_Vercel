@@ -6,7 +6,7 @@ function RSSFeeds({ feeds }) {
         <div className="max-w-6xl p-4 m-auto">
           <Title 
             title="Welcome to RSS Feeds" 
-            className="text-5xl font-bold text-center m-8 mt-0"
+            className="text-5xl font-bold text-center mb-8 mt-0 xl:mt-[-40px]"
           />
           <RSSList feeds={feeds} />
         </div>
