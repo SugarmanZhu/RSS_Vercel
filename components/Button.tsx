@@ -18,8 +18,8 @@ export default function Button({
         dark:hover:bg-neutral-50 dark:hover:text-neutral-900 
         transition-all ${className}`} 
         onClick={onClick}>
-            <Icon className="m-auto w-8 md:w-12 lg:w-16"/>
-            <p className="hidden lg:flex">{text}</p>
+            <Icon className="m-auto w-8 md:w-10 lg:w-12"/>
+            <p className="hidden xl:flex">{text}</p>
         </button>
     );
 };
