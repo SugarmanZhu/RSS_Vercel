@@ -2,7 +2,9 @@ function RSSItem({ rss }) {
     return (
         <div className="p-4 mt-2 border-b-4 border-neutral-300 
             dark:border-neutral-700 transition-colors">
-            <a className="text-2xl font-bold" href={rss.link}>{rss.title}</a>
+            <a className="text-2xl font-bold" href={rss.link} target="_blank">
+                {rss.title}
+            </a>
             <p className="text-neutral-500 py-px justify-center">
                 <span>{rss.provider}</span>
                 <span> · </span>
