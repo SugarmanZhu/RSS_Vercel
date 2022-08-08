@@ -23,8 +23,7 @@ function RSSPage({ feeds }) {
           text="Dark Mode" 
           onClick={onClickDarkMode}
           Icon={MoonIcon}
-          className="p-2.5 bg-neutral-800 text-neutral-50 
-            hover:bg-neutral-700 rounded-bl-lg transition-colors"
+          className="p-2.5 items-center rounded-bl-lg"
         />
       </div>
       <RSSFeeds feeds={feeds} />
