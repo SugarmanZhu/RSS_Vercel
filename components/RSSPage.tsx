@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import RSSFeeds from "../components/RSSFeeds";
 import Button from "../components/Button";
 import HyperLink from "../components/HyperLink";
+import { MoonIcon } from "@heroicons/react/solid";
 
 function RSSPage({ feeds }) {
   return (
@@ -19,8 +20,9 @@ function RSSPage({ feeds }) {
             dark:hover:bg-neutral-600 transition-colors"
         />
         <Button 
-          text="Toggle Dark Mode" 
+          text="Dark Mode" 
           onClick={onClickDarkMode}
+          Icon={MoonIcon}
           className="p-2.5 bg-neutral-800 text-neutral-50 
             hover:bg-neutral-700 rounded-bl-lg transition-colors"
         />
