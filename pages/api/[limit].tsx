@@ -88,7 +88,7 @@ async function fetchAll(
   const feeds : Array<RSSItemType> = 
   // flatten the array of arrays into a single array
   res.flat()
-  // sort by time_passed (descending)
+  // sort by time (descending)
   .sort((a, b) => b.isoDate.localeCompare(a.isoDate));
 
   if (limit > 0) {
