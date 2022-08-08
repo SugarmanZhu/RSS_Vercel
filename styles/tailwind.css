@@ -608,6 +608,12 @@ video {
   display: none;
 }
 
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .h-20 {
   height: 5rem;
 }
@@ -699,12 +705,12 @@ video {
   padding: 0px;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .p-2\.5 {

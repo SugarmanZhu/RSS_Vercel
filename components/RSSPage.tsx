@@ -16,8 +16,7 @@ function RSSPage({ feeds }) {
         <HyperLink 
           text="Back to Welcome Page" 
           link="https://ec2.zhuxiaotan.xyz"
-          className="m-2 p-2 rounded-lg hover:bg-neutral-300 
-            dark:hover:bg-neutral-600 transition-colors"
+          className="hover:bg-neutral-300 dark:hover:bg-neutral-600"
         />
         <Button 
           text="Dark Mode" 

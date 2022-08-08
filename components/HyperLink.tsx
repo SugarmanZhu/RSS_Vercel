@@ -9,5 +9,5 @@ export default function HyperLink({
     link, 
     className } : HyperLinkProps
 ) {
-    return <a className={className} href={link}>{text}</a>
+    return <a className={`m-2 p-2 h-fit rounded-lg transition-colors ${className}`} href={link}>{text}</a>
 };
