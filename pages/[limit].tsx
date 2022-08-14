@@ -31,6 +31,7 @@ export const getStaticProps = async ({ params }) => {
     if (!isNaN(limit)) {
         feeds = await (await fetch(`${server}/api/${limit}`)).json();
     }
+    console.log("limit updated" + limit);
     return {
         props: {
         feeds,
