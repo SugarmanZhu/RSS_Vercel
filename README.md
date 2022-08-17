@@ -23,9 +23,9 @@ Note: the number of feeds is recommanded to be kept less than 50 for performance
 
 ### Cached pages
 
-The main page ([https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz)) is being cached and updated every 10 seconds.
+The main page ([https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz)) is being cached ~~and updated~~ every 10 seconds.
 
-The following pages are being cached and updated every 60 seconds:
+The following pages are being cached ~~and updated~~ every 60 seconds:
 - [https://rss.zhuxiaotan.xyz/-300](https://rss.zhuxiaotan.xyz/-300)
 - [https://rss.zhuxiaotan.xyz/-200](https://rss.zhuxiaotan.xyz/-200)
 - [https://rss.zhuxiaotan.xyz/-100](https://rss.zhuxiaotan.xyz/-100)
@@ -35,6 +35,8 @@ The following pages are being cached and updated every 60 seconds:
 - [https://rss.zhuxiaotan.xyz/300](https://rss.zhuxiaotan.xyz/300)
 
 All other pages are not cached (loading takes longer).
+
+Note: due to the serverless function bandwidth limit on Vercel, the pages are no longer being updated, you may need to refresh the page manually.
 
 
 ## API Usage
