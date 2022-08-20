@@ -120,6 +120,7 @@ More information on Vercel Deployment: [Next.js deployment documentation](https:
 - Convert UTC time to Locale time on front end (using Intl / momentJS)
 - Use database to store RSS feeds and allow user to check past RSS feeds
 - Use ISR to cache API responses?
+- Add tests (`npm run test`)
 
 
 ## Screenshot
