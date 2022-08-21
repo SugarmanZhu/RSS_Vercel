@@ -26,7 +26,6 @@ export const getStaticProps = async ({ params }) => {
         time_passed: "0 seconds ago",
         content: `${params.limit} is not a valid parameter.`,
         provider: "SugarmanZhu",
-
     }];
     if (!isNaN(limit)) {
         feeds = await (await fetch(`${server}/api/${limit}`)).json();

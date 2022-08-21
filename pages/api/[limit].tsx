@@ -106,7 +106,7 @@ export default async function handler(
     const limit : string = req.query.limit as string;
     const n_top : number = parseInt(limit);
     if (isNaN(n_top)) {
-        res.status(404).json({message: `${limit} is not a number`});
+        res.status(400).json({message: `${limit} is not a number`});
     } else {
         /* 
         Vercel Hobby (free tier) has Serverless Function Execution Timeout: 
