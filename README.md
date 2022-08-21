@@ -7,6 +7,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Open a browser and navigate to the URL [https://rss.zhuxiaotan.xyz](https://rss.zhuxiaotan.xyz) to view the RSS page.
 
+Note: I now own the domain [zhuxiaotan.com](https://zhuxiaotan.com) and you can view the page at [https://rss.zhuxiaotan.com](https://rss.zhuxiaotan.com).
+
 ### Parameter
 
 A parameter may be added to the URL to specify the number of feeds to display.
