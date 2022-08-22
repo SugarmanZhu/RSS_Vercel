@@ -11,6 +11,7 @@ export const sources : Record<string, string> = {
   "Jeff Bezos" : "https://rsshub.app/twitter/user/jeffbezos",
   "The Verge" : "https://www.theverge.com/rss/frontpage",
   "电丸科技AK" : "https://rsshub.app/youtube/channel/UCZVThl_MRppEdGUPGjXSSdg",
+  "MKBHD" : "https://rsshub.app/youtube/channel/UCBJycsmduvYEL83R_U4JriQ",
   "Netflix" : "https://rsshub.app/netflix/newsroom",
   "小鹿Lawrence" : "https://rsshub.app/bilibili/user/video/37029661",
   "米老师呀" : "https://rsshub.app/bilibili/user/video/9504837",
