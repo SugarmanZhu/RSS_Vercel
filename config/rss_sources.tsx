@@ -12,6 +12,8 @@ export const sources : Record<string, string> = {
   "The Verge" : "https://www.theverge.com/rss/frontpage",
   "电丸科技AK" : "https://rsshub.app/youtube/channel/UCZVThl_MRppEdGUPGjXSSdg",
   "MKBHD" : "https://rsshub.app/youtube/channel/UCBJycsmduvYEL83R_U4JriQ",
+  "She's Danni" : "https://rsshub.app/youtube/channel/UCyzrw0hDTOkv53hvLtiQqhA",
+  "索菲亚一斤半" : "https://rsshub.app/youtube/channel/UCR2LHLiQmL_zEJnlCiyyxAA",
   "Netflix" : "https://rsshub.app/netflix/newsroom",
   "小鹿Lawrence" : "https://rsshub.app/bilibili/user/video/37029661",
   "米老师呀" : "https://rsshub.app/bilibili/user/video/9504837",
